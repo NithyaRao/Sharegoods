@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sharegoods</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <style>
+    body {
+        background-color: #79CDCD;
+    }
+  </style>
+</head>
+<body>
+    <%= render "layouts/header" %>
+    <% if flash.now[:notice] %>
+         <div class="alert alert-success">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <%= flash.now[:notice] %>
+         </div>
+   <% elsif flash.now[:error] %>
+         <div class="alert alert-danger">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <%= flash.now[:error] %>
+         </div>
+   <% elsif flash.now[:alert] %>
+         <div class="alert alert-warning">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <%= flash.now[:alert] %>
+         </div>
+   <% end %>     
+<%= yield %>
+<%= render "layouts/footer" %>
+</body>
+</html>
