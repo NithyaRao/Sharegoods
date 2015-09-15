@@ -1,17 +1,12 @@
 <header class="header-basic">
     <div class="header-limiter">
       <% if (params[:controller] != 'welcome' ) %>       
-        <h1 style="text-align: center"><a href="#">Share<span>goods</span></a> Share with your Neighbor or Friends! </h1>
+        <h1><a href="#">Share<span>goods</span></a> Share with your Neighbor or Friends! </h1>
       <% end %>  
       <nav>
           <% if current_user %>
-              <div class="pull-right">  
-                <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
-                    <span class="sr-only">Sign out</span>
-                    <span class="glyphicon glyphicon-log-out"></span>
-              </div>
-              <% end %>
-          <% end %> 
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+           <% end %>
       </nav>     
     </div>
 </header>
