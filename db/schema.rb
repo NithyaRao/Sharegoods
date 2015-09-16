@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824204111) do
+ActiveRecord::Schema.define(version: 20150915181741) do
+
+  create_table "", id: false, force: :cascade do |t|
+    t.integer "post_a_id", null: false
+    t.integer "post_b_id", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "owner"
+    t.string   "avatar"
+    t.boolean  "public",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "groups", ["name"], name: "index_groups_on_name", unique: true
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.boolean  "groupowner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

@@ -1,0 +1,24 @@
+<h1> Join a Share membership </h1>
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for(@membership) do |f| %>
+      <% if @membership.errors.any? %>
+        <div class="alert alert-danger">
+        <h4>There are <%= pluralize(@membership.errors.count, "error") %>.</h4>
+        <ul>
+          <% @membership.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+        </div>
+      <% end %>
+      <div class="form-membership">
+        <%= f.label :name %>
+        <%= f.collection_select(:group_id, Group.all, :id, :name) %>
+      </div>
+      <div class="form-membership">
+        <%= f.submit "Join Group", class: 'btn btn-warning' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -203,3 +203,61 @@ body {
   margin:0;
   padding:0;
 }
+
+h1#header-centered {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+small {
+  text-align: left;
+  color: black;
+  font-weight: bold;
+}
+
+
+blockquote {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  width: 450px;
+  margin: 0.25em 0;
+  padding: 0.25em 40px;
+  line-height: 1.45;
+  position: relative;
+  color: black;
+  background:#79CDCD;
+}
+
+blockquote cite {
+  color: black;
+  font-size: 14px;
+  display: block;
+  margin-top: 5px;
+}
+
+h4{
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  padding: 0.25rem;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+th {
+  padding: 0.25rem;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+tbody tr:hover {
+  background: yellow;
+}
