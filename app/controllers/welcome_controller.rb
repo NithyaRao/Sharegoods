@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     if current_user 
-      redirect_to groups_path 
+      redirect_to new_group_path 
     end
   end
 

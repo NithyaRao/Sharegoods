@@ -1,28 +1,11 @@
-<h1> Create a Share Group </h1>
+<div class="container" >
 <div class="row">
   <div class="col-md-6">
-    <%= form_for(@group) do |f| %>
-      <% if @group.errors.any? %>
-        <div class="alert alert-danger">
-        <h4>There are <%= pluralize(@group.errors.count, "error") %>.</h4>
-        <ul>
-          <% @group.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-        </div>
-      <% end %>
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Enter group name" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :description %>
-        <%= f.text_field :description, class: 'form-control', placeholder: "Enter description" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "Create Group", class: 'btn btn-warning' %>
-      </div>
-    <% end %>
+   <%= render partial: 'selectgroup' %> 
   </div>
+
+  <div class="col-md-6">
+    <%= render partial: 'creategroup' %>
+  </div>
+</div>
 </div>

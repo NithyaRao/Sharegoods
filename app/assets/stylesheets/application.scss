@@ -1,6 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+main
+{
+  display: block
+}
+
 .user-info {
    margin-top: 9px;
 }
@@ -202,6 +207,22 @@ right:-15px;
 body {
   margin:0;
   padding:0;
+  height: 100%;
+}
+
+html {
+height: 100%;
+}
+
+#container {
+min-height: 100%;
+margin-bottom: -330px;
+position: relative;
+}
+
+.clearfooter {
+height: 150px;
+clear: both;
 }
 
 h1#header-centered {

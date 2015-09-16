@@ -16,16 +16,24 @@ class GroupsController < ApplicationController
   def create
    # debugger
     @user = User.find(current_user)
-    @group = Group.new(group_params)
-    @group.owner = @user.id
-    if @group.save && @group.memberships.create(user_id: @group.owner, groupowner: true)
-       flash[:notice] = "Group was created succesfully"
+    if params[:submit] == "Log in" 
+      @group = Group.find(params[:group][:id])
+      if @group
+       flash[:notice] = "Welcome to the #{@group.name} Group"
        redirect_to [@group]
-    else
-       flash[:error] = "There was an error creating the group. Please try again."
-       render :new
-    end 
- end
+      end
+    else 
+      @group = Group.new(group_params)
+      @group.owner = @user.id
+      if @group.save && @group.memberships.create(user_id: @group.owner, groupowner: true)
+         flash[:notice] = "Group was created succesfully"
+         redirect_to [@group]
+      else
+         flash[:error] = "There was an error creating the group. Please try again."
+         render :new
+      end 
+    end
+  end
 
  def edit
  end
