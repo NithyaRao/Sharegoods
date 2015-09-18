@@ -11,12 +11,14 @@ class GroupsController < ApplicationController
 
   def new
      @group = Group.new
+     @user = User.find(current_user)
+     @membergroup = @user.groups
   end
 
   def create
    # debugger
     @user = User.find(current_user)
-    if params[:submit] == "Log in" 
+    if params[:selgroup] == "1" || params[:submit] == "Log In"
       @group = Group.find(params[:group][:id])
       if @group
        flash[:notice] = "Welcome to the #{@group.name} Group"
