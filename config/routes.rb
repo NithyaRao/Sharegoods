@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'invitations/new'
+
+  get 'invitation/new'
+
   devise_for :users
   resources :users, only: [:update]
   get 'welcome/index'

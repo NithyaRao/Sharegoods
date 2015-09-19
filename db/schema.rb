@@ -11,9 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917205159) do
+ActiveRecord::Schema.define(version: 20150918204532) do
 
- 
+  create_table "", id: false, force: :cascade do |t|
+    t.integer "post_a_id", null: false
+    t.integer "post_b_id", null: false
+  end
+
   create_table "addresses", force: :cascade do |t|
     t.string   "address1",             null: false
     t.string   "address2"
@@ -41,12 +45,22 @@ ActiveRecord::Schema.define(version: 20150917205159) do
 
   add_index "groups", ["name"], name: "index_groups_on_name", unique: true
 
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.string   "recipient_email"
+    t.string   "token"
+    t.datetime "sent_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
     t.boolean  "groupowner"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "invitation_id"
   end
 
   create_table "users", force: :cascade do |t|
