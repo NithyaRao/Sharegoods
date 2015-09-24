@@ -1,7 +1,16 @@
-<%= form_for(@invitation) do |f| %>
-  <p>
-    <%= f.label :recipient_email, "Friend's email address" %><br />
-    <%= f.text_field :recipient_email %>
-  </p>
-  <p><%= f.submit "Invite!" %></p>
+<%= form_for @invitation, html: {id: 'new_invitegroup'}  do |f| %>
+  <% if @invitation.errors.any? %>
+        <div class="alert alert-danger">
+        <h4>There are <%= pluralize(@invitation.errors.count, "error") %>.</h4>
+        <ul>
+          <% @invitation.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+        </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.email_field :recipient_email, class: 'form-control', placeholder:  "Enter Email Address" %>
+    <%= f.submit "Invite!", class: 'btn btn-warning', name: 'submit' %>
+  </div>
 <% end %>

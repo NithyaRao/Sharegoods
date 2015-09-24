@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
       @admin = User.find(@group.owner) 
       @members =  @group.users
       session[:group_id] = @group.id
+      @invitation = Invitation.new
      # debugger
       # change the User.all to new many-many table 
 

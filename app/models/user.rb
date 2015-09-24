@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   def check_invitation
      # check if the user got an invitation to a group , if yes then 
      # creates a membership record and deletes the invitation.
-      debugger
+     # debugger
      @invitation = Invitation.find_by_recipient_email(self.email) 
      if @invitation 
         #create membership record 
