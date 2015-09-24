@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
     else 
       @group = Group.new(group_params)
       @group.owner = @user.id
-      if @group.save && @group.memberships.create(user_id: @group.owner, groupowner: true)
+      if @group.save
          flash[:notice] = "Group was created succesfully"
          redirect_to [@group]
       else
