@@ -1,5 +1,5 @@
 class Membership < ActiveRecord::Base
-validates_presence_of :invitation_id, :message => 'is required'
+#validates_presence_of :invitation_id, :message => 'is required'
 validates_uniqueness_of :invitation_id
 belongs_to :user
 belongs_to :group
