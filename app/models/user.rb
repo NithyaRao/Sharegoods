@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :memberships, :dependent => :destroy
   has_many :groups, :through => :memberships
+  has_one :address
+  #accepts_nested_attributes_for :address
 
   after_create  :check_invitation
 

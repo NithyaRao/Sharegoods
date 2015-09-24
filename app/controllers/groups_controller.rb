@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-   # debugger
+    debugger
     @user = User.find(current_user)
     if params[:selgroup] == "1" || params[:submit] == "Log In"
       @group = Group.find(params[:group][:id])

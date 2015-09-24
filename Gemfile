@@ -48,6 +48,7 @@ gem 'friendly_id'
 gem 'haml'
 gem "haml-rails", "~> 0.9"
 gem 'high_voltage', '~> 2.4.0'
+gem 'StreetAddress', :require => "street_address"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
