@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918204532) do
+ActiveRecord::Schema.define(version: 20150922193708) do
 
   create_table "", id: false, force: :cascade do |t|
     t.integer "post_a_id", null: false
@@ -52,7 +52,10 @@ ActiveRecord::Schema.define(version: 20150918204532) do
     t.datetime "sent_at"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "group_id"
   end
+
+  add_index "invitations", ["group_id"], name: "index_invitations_on_group_id"
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"

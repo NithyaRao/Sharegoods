@@ -1,6 +1,8 @@
 class MembershipsController < ApplicationController
+
   def new
-     @membership = Membership.new
+     @membership = Membership.new(:invitation_token => params[:invitation_token])
+     # @user.email = @user.invitation.recipient_email if @user.invitation
   end
 
   def create

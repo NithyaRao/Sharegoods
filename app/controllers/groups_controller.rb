@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
       @group = Group.find(params[:id]) 
       @admin = User.find(@group.owner) 
       @members =  @group.users
+      session[:group_id] = @group.id
      # debugger
       # change the User.all to new many-many table 
 
@@ -11,7 +12,8 @@ class GroupsController < ApplicationController
 
   def new
      @group = Group.new
-     @user = User.find(current_user)
+     @user = User.find(current_user.id)
+     @invitation = Invitation.new
      @membergroup = @user.groups
   end
 
