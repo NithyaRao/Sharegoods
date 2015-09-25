@@ -5,7 +5,7 @@ class CreateInvitations < ActiveRecord::Migration
       t.string :recipient_email
       t.string :token
       t.datetime :sent_at
-
+    
       t.timestamps null: false
     end
   end

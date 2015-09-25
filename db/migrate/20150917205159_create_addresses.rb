@@ -8,9 +8,11 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :zip, :null => false
       t.string :home_phone
       t.string :cell_phone
-      t.references :user, index: true, foreign_key: true
-
+      t.integer :addressable_id
+      t.string :addressable_type
       t.timestamps null: false
     end
+    add_index :addresses, [:addressable_type, :addressable_id], :unique => true
+
   end
 end

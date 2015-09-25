@@ -13,6 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20150922193708) do
 
+  create_table "addresses", force: :cascade do |t|
+    t.string   "address1",                   null: false
+    t.string   "address2"
+    t.string   "city",                       null: false
+    t.string   "state",            limit: 2, null: false
+    t.string   "zip",                        null: false
+    t.string   "home_phone"
+    t.string   "cell_phone"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", unique: true
+
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
