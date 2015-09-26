@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922193708) do
+ActiveRecord::Schema.define(version: 20150925183607) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "address1",                   null: false
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20150922193708) do
   end
 
   add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", unique: true
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -52,6 +59,22 @@ ActiveRecord::Schema.define(version: 20150922193708) do
   end
 
   add_index "invitations", ["group_id"], name: "index_invitations_on_group_id"
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "owner_id"
+    t.string   "avatar"
+    t.integer  "requestor_id"
+    t.datetime "available_at"
+    t.datetime "requesting_at"
+    t.datetime "returning_at"
+    t.text     "comment"
+    t.boolean  "available"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"

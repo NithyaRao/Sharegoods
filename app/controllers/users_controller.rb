@@ -12,14 +12,17 @@ class UsersController < ApplicationController
    # @posts = @user.posts.visible_to(current_user)
     end
    
-  def edit
-      @user = User.find(params[:id])
-      @user.build_address if @user.address.nil? 
-  end
+  # def edit
+  #   debugger
+  #     @user = User.find(params[:id])
+  #     # error unless @user == current_user
+  #     @user.build_address if @user.address.nil? 
+  #   debugger
+  # end
    def update
      debugger
      @user = current_user
-     @user.build_address if @user.address.nil?
+    # @user.build_address if @user.address.nil?
      if @user.update_attributes(user_params)
        flash[:notice] = "User information updated"
        redirect_to edit_user_registration_path

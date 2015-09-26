@@ -1,3 +1,5 @@
+<% @user.build_address unless @user.address.present? %>
+<% #TODO : move this into a controller %>
 <div class="col-md-6"> 
   <h2>Edit personal information</h2>
     <%= form_for(@user) do |f| %>
@@ -6,6 +8,8 @@
         <%= f.text_field :name, class: 'form-control', placeholder: "Enter name", autofocus: true %>
       </div>
       <div class="form-group">
+        <% debugger %>
+
       <%= f.fields_for :address do |address| %>
          <%= render :partial => 'shared/address', :locals => {:f => address} %>
       <% end %>

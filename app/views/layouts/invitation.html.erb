@@ -7,3 +7,4 @@ You are invited to join the ShareGoods <%= Group.find(@invitation.group_id).name
 </p>
 
 <%= link_to "Activate", new_user_registration_url(email: @invitation.recipient_email, group_id: @invitation.group_id) %>
+<%# add token %>

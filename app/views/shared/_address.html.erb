@@ -1,32 +1,33 @@
-<p>
-  <%= f.label :address1, 'Address 1' %><br />
-  <%= f.text_field :address1 %>
-</p>
- 
-<p>
-  <%= f.label :address2, 'Address 2' %><br />
-  <%= f.text_field :address2 %>
-</p>
- 
-<p>
-  <%= f.label :city %><br />
-  <%= f.text_field :city %>
-</p>
- 
-<p>
-  <%= f.label :state %><br />
-  <%= f.text_field :state, :size => 2 %>
-</p>
- 
-<p>
-  <%= f.label :zip, 'Zip Code' %><br />
-  <%= f.text_field :zip %>
-</p>
-<p>
-  <%= f.label :home_phone, 'Home Phone' %><br />
-  <%= f.text_field :home_phone %>
-</p>
-<p>
-  <%= f.label :cell_phone, 'Cell Phone' %><br />
-  <%= f.text_field :cell_phone %>
-</p>
+<table id="address">
+      <tr>
+        <td class="label"><%= f.label :address1, 'Address 1' %></td>
+        <td class="wideField" colspan="3">
+        <%= f.text_field :address1, class: 'form-control', placeholder: "Enter Address", autofocus: true %></td>
+      </tr>
+      <tr>
+        <td class="label"><%= f.label :address2, 'Address 2' %></td>
+        <td class="wideField" colspan="3">
+        <%= f.text_field :address2, class: 'form-control', placeholder: "Enter Address", autofocus: true %></td>
+      </tr>
+      <tr>
+        <td class="label"><%= f.label :city, 'City' %></td>
+        <td class="wideField">
+        <%= f.text_field :city, class: 'form-control', placeholder: "Enter City", autofocus: true %></td>
+      </tr>
+      <tr>
+        <td class="label"><%= f.label :state, 'State' %></td>
+        <td class="slimField">
+        <%= f.text_field :state, class: 'form-control', placeholder: "Enter State", autofocus: true %></td>
+        <td class="label"><%= f.label :zip, 'Zip Code' %></td>
+        <td class="wideField">
+        <%= f.text_field :zip, class: 'form-control', placeholder: "Enter ZipCode", autofocus: true %></td>
+      </tr>
+      <tr>
+        <td class="label"><%= f.label :home_phone, 'Phone (H)' %></td>
+        <td class="wideField" colspan="1">
+        <%= f.text_field :home_phone, class: 'form-control', placeholder: "Enter Home Phone", autofocus: true %></td>
+        <td class="label"><%= f.label :cell_phone, 'Phone (C)' %></td>
+        <td class="wideField" colspan="1">
+        <%= f.text_field :cell_phone, class: 'form-control', placeholder: "Enter Cell Phone", autofocus: true %></td>
+      </tr>
+</table>
