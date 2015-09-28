@@ -24,7 +24,9 @@
         </table>
       </div>
     </div>
-    <h3> Invite People to join the Group </h3>
-    <%= render template: "invitations/new" %>
+    <% if current_user == @admin %>
+     <h3> Invite People to join the Group </h3>
+     <%= render template: "invitations/new" %>
+     <% end %>
     </div>
 </div>

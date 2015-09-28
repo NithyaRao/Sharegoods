@@ -5,7 +5,7 @@ belongs_to :user
 belongs_to :group
 has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
 belongs_to :invitation
-
+has_many :items
 
 def invitation_token
   invitation.token if invitation
