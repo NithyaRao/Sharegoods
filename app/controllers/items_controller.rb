@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   def index
+    debugger
     @items = Item.all
+    @categories = Category.all
   end
 
   def show

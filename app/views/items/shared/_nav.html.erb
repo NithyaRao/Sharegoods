@@ -1,37 +1,16 @@
 <div class="container">
-
-<div id="content">
-    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-        <li><a href="#red" data-toggle="tab">Request</a></li>
-        <li class="active"><a href="#orange" data-toggle="tab">Inventory</a></li>
-        <li><a href="#yellow" data-toggle="tab">Wishlist</a></li>
-        <li><a href="#green" data-toggle="tab">Add</a></li>
-        <li><a href="#blue" data-toggle="tab">Members</a></li>
+ <div id="content">
+    <ul id="tabs" class="dropdown-menu" >
+    <% @categories.each do |category| %>
+    <li><a href="#cat<%= category.id %>" data-toggle="dropdown"><%= category.name %></a></li>
+    <% end %>
     </ul>
-    <div id="my-tab-content" class="tab-content">
-        <div class="tab-pane" id="red">
-            <h1>Red</h1>
-            <p>red red red red red red</p>
-        </div>
-        <div class="tab-pane active" id="orange">
-            <h1>Orange</h1>
-            <p>orange orange orange orange orange</p>
-        </div>
-        <div class="tab-pane" id="yellow">
-            <h1>Yellow</h1>
-            <p>yellow yellow yellow yellow yellow</p>
-        </div>
-        <div class="tab-pane" id="green">
-            <h1>Green</h1>
-            <p>green green green green green</p>
-        </div>
-        <div class="tab-pane" id="blue">
-            <h1>Blue</h1>
-            <p>blue blue blue blue blue</p>
-        </div>
+    <div class="tab-content">
+    <% @categories.each do |category| %>
+        <div class="tab-pane" id="cat<%= category.id %>"><h1> render template with locals changing for each category </h1></div>
+    <% end %>
     </div>
-</div>
-
+ </div>
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
@@ -40,6 +19,4 @@
 </script>    
 </div> <!-- container -->
 
-
-<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
 

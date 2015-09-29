@@ -5,7 +5,10 @@ class GroupsController < ApplicationController
       @members =  @group.users
       session[:group_id] = @group.id
       @invitation = Invitation.new
-     # debugger
+      @items = Item.where(owner_id: @group.memberships)
+       @categories = Category.all
+
+      #debugger
       # change the User.all to new many-many table 
 
     #  @member = user.new
@@ -19,7 +22,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    debugger
+    #debugger
     @user = User.find(current_user)
     if params[:selgroup] == "1" || params[:submit] == "Log In"
       @group = Group.find(params[:group][:id])

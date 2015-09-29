@@ -12,3 +12,16 @@ member = User.new(
  )
  member.skip_confirmation!
  member.save!
+
+ Categories.create(name:"Cleaning", description: "Vacuum cleaner, mop etc")
+ Category.create(name:"Kitchen Appliances", description: "High power blender, espresso maker, ice cream maker, popcorn machinetc")
+Category.create(name:"Yard", description: "Leaf Blower, rake, snow shovel wheelbarrow etc")
+Category.create(name:"Party Supplies", description: "Table,centerpiece,decorations etc")
+Category.create(name:"Furniture", description: "Table,chairs,lawn furniture,inflattable mattress etc")
+ Category.create(name:"Sports/Fitness", description: "Camping gear, small inflatable raft, volleyball net, cricket bats,balls etc")
+ Category.create(name:"Toys", description: "3 wheeler, play tent, playsand, cycle, scooter etc")
+Category.create(name:"Arts/Crafts", description: "paint brush, stamps, sewing machine etc")
+Category.create(name:"Travel", description: "duffle bag, rolling suitcase, maps etc")
+Category.create(name:"Health", description: "Massage chair, Pressure monitor, humidifier etc")
+Category.create(name:"Electronic", description: "DVD Player, Video camera, Camera etc")
+Category.create(name:"Other", description: "Miscellaneous items etc")

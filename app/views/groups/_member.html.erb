@@ -1,4 +1,37 @@
-<tr class="highlight">
-<td> <h4><strong><%= member.name %></strong></h4> </td>
-<td> <h4><strong><%= member.email %></strong></h4> </td>
-</tr>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>  Welcome to <%= @group.name %></h1>
+    <blockquote>
+     <p><%= @group.description %></p>
+     <p> Active members: <%=@group.users.count%></p>
+     <cite>Admin/Owner: <%= @admin.name %></cite>
+   </blockquote>
+  </div>
+  <div class="col-md-6 col-md-offset-2">
+    <h4> <%= 'Member'.pluralize(@members.count) %></h4> 
+    <div class="container">
+      <div class="col-md-6 col-md-offset-1">
+        <table class="table table-striped table-bordered table-hover">    
+          <thead>
+          <tr>
+            <th>Name </th>
+            <th>Email </th>
+          </tr>
+          </thead>  
+          <tbody>   
+            <% @members.each do |member| %> 
+            <tr class="highlight">
+            <td> <h4><strong><%= member.name %></strong></h4> </td>
+            <td> <h4><strong><%= member.email %></strong></h4> </td>
+            </tr>  
+            <% end %>   
+          </tbody> 
+        </table>
+      </div>
+    </div>
+    <% if current_user == @admin %>
+     <h3> Invite People to join the Group </h3>
+     <%= render template: "invitations/new" %>
+     <% end %>
+    </div>
+</div>
