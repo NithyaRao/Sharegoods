@@ -1,29 +1,26 @@
 <div class="container">
 
 <div id="content">
+    <div id="sharetab">
     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
         <li><a href="#navreq" data-toggle="tab">Request</a></li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventory<span class="caret"></span></a>
         <ul class="dropdown-menu">
             <% @categories.each do |category| %>
-            <li><a href="#" id="cat<%= category.id %>" data-toggle="dropdown"><%= category.name %></a></li>
-            
-            <% end %>
+            <li> <%= link_to category.name, fetch_items_path(category_id: category.id), remote: true  %></li> 
+             <% end %>
         </ul>
         </li>
         <li><a href="#navwish" data-toggle="tab">Wishlist</a></li>
         <li><a href="#navadd" data-toggle="tab">Add</a></li>
         <li><a href="#navgroup" data-toggle="tab"><%=@group.name %> profile</a></li>
     </ul>
+    </div>
     <div id="my-tab-content" class="tab-content">
         <div class="tab-pane" id="navreq">
             <%= render template: "items/new", locals: {group_id: @group.id} %>
         </div>
-         <% @categories.each do |category| %>
-          <div class="tab-pane" id="cat<%= category.id %>">
-            <%= render template: "items/index", collection: @items , locals: {group_id: @group.id}%> 
-        </div>
-        <% end %>    
+            
         <div class="tab-pane" id="navwish">
             <h1>Yellow</h1>
             <p>yellow yellow yellow yellow yellow</p>
@@ -45,14 +42,6 @@
     });
 </script>  
 
-<script type="text/javascript"charset="UTF-8">
-    jQuery(document).ready(function ($) {
-    $("[id^=cat]").click(function () {
-     alert('Hello, world!');
-     return false;
-     })
-    });
- </script> 
 </div> <!-- container -->
 
 

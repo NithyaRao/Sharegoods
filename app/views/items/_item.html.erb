@@ -1,0 +1,10 @@
+<tr class="clickable-row" data-href="url://" id=<%="item-#{item.id}"%> >
+<td><a href="#"> <h4><strong><%= item.name %></strong></h4> </a></td>
+<td><a href="#"> <%= item.description %> </a> </td>
+<td><a href="#"> <%= item.contact_name %> </a> </td>
+<td><a href="#"><%= item.available_at.strftime('%D') if item.available_at %> </a> </td>
+<td><a href="#"> <%= item.requestor_name %> </a></td>
+<td><a href="#"><%= item.returning_at.strftime('%D') if item.returning_at %> </a> </td>
+<td><a href="#"> <%= item.comment%> </a></td>
+<td><a href="#"> <h4> Avatar </h4> </a></td>
+</tr>

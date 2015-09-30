@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   def index
-    debugger
-    @items = Item.all
+    #debugger
+    @group = Group.find(session[:group_id])
+    @items = Item.where(owner_id: @group.memberships)
     @categories = Category.all
   end
 
@@ -28,6 +29,17 @@ class ItemsController < ApplicationController
        redirect_to edit_item_path
      end
   end
+
+  def from_category
+    #debugger
+    @group = Group.find(session[:group_id])
+    @items = Item.where(owner_id: @group.memberships)
+    @selected = @items.where(:category_id => params[:category_id])
+    respond_to do |format|
+        format.js
+    end
+  end
+
   private
  
    def items_params

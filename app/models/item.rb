@@ -11,4 +11,12 @@ class Item < ActiveRecord::Base
    def categorized
       self.category_id 
    end
+
+   def contact_name 
+       User.find(Membership.find(self.owner_id).user_id).name
+   end
+
+   def requestor_name
+       User.find(Membership.find(self.requestor_id).user_id).name if self.requestor_id
+   end
 end

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :groups, except: [:delete] do
     resources :items
   end 
+  get "/fetch_items" => 'items#from_category', as: 'fetch_items'
+  
   root to: 'welcome#index'
 
   end
