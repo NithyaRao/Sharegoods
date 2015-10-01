@@ -61,6 +61,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def new_request
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   private
  
    def item_params

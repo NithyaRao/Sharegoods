@@ -1,5 +1,6 @@
 <tr class="clickable-row" data-href="url://" id=<%="item-#{item.id}"%> >
-<td><a href="#"> <h4><strong><%= item.name %></strong></h4> </a></td>
+<td><%= link_to item.name, new_request_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %> 
+</td>
 <td><a href="#"> <%= item.description %> </a> </td>
 <td><a href="#"> <%= item.contact_name %> </a> </td>
 <td><a href="#"><%= item.available_at.strftime('%D') if item.available_at %> </a> </td>
@@ -8,3 +9,5 @@
 <td><a href="#"> <%= item.comment%> </a></td>
 <td><a href="#"> <h4> Avatar </h4> </a></td>
 </tr>
+<div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
