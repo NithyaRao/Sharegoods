@@ -6,7 +6,9 @@ class GroupsController < ApplicationController
       session[:group_id] = @group.id
       @invitation = Invitation.new
       @items = Item.where(owner_id: @group.memberships)
-       @categories = Category.all
+      @categories = Category.all
+      @item = Item.new
+      @membership = Membership.find_by(user_id: session[:user_id], group_id: @group.id)  
 
       #debugger
       # change the User.all to new many-many table 
@@ -17,6 +19,7 @@ class GroupsController < ApplicationController
   def new
      @group = Group.new
      @user = User.find(current_user.id)
+     session[:user_id] = @user.id
      @invitation = Invitation.new
      @membergroup = @user.groups
   end
@@ -26,7 +29,7 @@ class GroupsController < ApplicationController
     @user = User.find(current_user)
     if params[:selgroup] == "1" || params[:submit] == "Log In"
       @group = Group.find(params[:group][:id])
-      if @group
+       if @group
        flash[:notice] = "Welcome to the #{@group.name} Group"
        redirect_to [@group]
       end

@@ -1,5 +1,12 @@
+/* 
+* Need this for Date picker gem
+*
+*
+*= require bootstrap-datepicker 
+*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 main
 {
   display: block

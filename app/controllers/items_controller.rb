@@ -11,9 +11,30 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new(item_params)
-    @owner_id = current_user.id 
-    @category_id = Category.find(:category_id)
+    debugger
+    @item = Item.new
+  end
+
+  def create
+       @item = Item.new(item_params)
+       @group = Group.find(session[:group_id])
+  
+       @item.owner_id = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id]).id
+       debugger
+   
+     if @item.save 
+         flash[:notice] = "Item was created succesfully"
+         redirect_to :back
+      #   redirect_to new_group_item_path(session[:group_id])
+     else
+         flash[:error] = "There was an error creating the Item. Please try again."
+         render :new
+     end 
+
+    #  respond_to do |format|
+   #     format.html
+     #   format.js
+     # end
   end
 
   def edit
@@ -42,7 +63,7 @@ class ItemsController < ApplicationController
 
   private
  
-   def items_params
+   def item_params
      params.require(:item).permit(:category_id, :name, :description, :owner_id, :avatar, :requestor_id, :available_at, :requesting_at, :returning_at, :comment, :available )
    end
 end

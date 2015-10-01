@@ -3,15 +3,13 @@ class Item < ActiveRecord::Base
    belongs_to :owner, :class_name => 'Membership'
    has_one :requestor, :class_name => 'Membership'
  
-   before_save :get_category_id
+  # before_save :get_category_id
   
-   def get_category_id
-   end
+  # def get_category_id
+  #     Category.find(self.category
+  # end
  
-   def categorized
-      self.category_id 
-   end
-
+   
    def contact_name 
        User.find(Membership.find(self.owner_id).user_id).name
    end
