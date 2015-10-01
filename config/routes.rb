@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :items
   end 
   get "/fetch_items" => 'items#from_category', as: 'fetch_items'
-  get "items/new_request" => 'items#new_request', :as => :new_request
+  get "items/new_request/:item_id" => 'items#new_request', :as => :new_request
   
   root to: 'welcome#index'
 

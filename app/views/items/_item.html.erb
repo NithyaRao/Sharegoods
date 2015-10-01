@@ -1,5 +1,5 @@
 <tr class="clickable-row" data-href="url://" id=<%="item-#{item.id}"%> >
-<td><%= link_to item.name, new_request_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %> 
+<td><%= link_to item.name, new_request_path(item_id: item.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'data-item-name' => 'item.name'}  %> 
 </td>
 <td><a href="#"> <%= item.description %> </a> </td>
 <td><a href="#"> <%= item.contact_name %> </a> </td>
@@ -11,3 +11,4 @@
 </tr>
 <div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
+ 

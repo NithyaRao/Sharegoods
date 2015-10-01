@@ -62,6 +62,8 @@ class ItemsController < ApplicationController
   end
 
   def new_request
+   # debugger
+     @item = Item.find(params[:item_id])
     respond_to do |format|
       format.html
       format.js
