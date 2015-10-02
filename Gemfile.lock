@@ -266,7 +266,6 @@ DEPENDENCIES
   faker
   figaro
   friendly_id
-  haml
   haml-rails (~> 0.9)
   high_voltage (~> 2.4.0)
   jbuilder (~> 2.0)

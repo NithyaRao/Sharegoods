@@ -45,7 +45,7 @@ gem 'figaro'
 gem 'redcarpet'
 gem 'pundit'
 gem 'friendly_id'
-gem 'haml'
+#gem 'haml'
 gem "haml-rails", "~> 0.9"
 gem 'high_voltage', '~> 2.4.0'
 gem 'StreetAddress', :require => "street_address"

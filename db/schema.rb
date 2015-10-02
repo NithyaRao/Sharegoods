@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925183607) do
+ActiveRecord::Schema.define(version: 20151002164007) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "address1",                   null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20150925183607) do
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "owner"
+    t.integer  "owner_id"
     t.string   "avatar"
     t.boolean  "public",      default: false
     t.datetime "created_at",                  null: false
@@ -66,14 +66,11 @@ ActiveRecord::Schema.define(version: 20150925183607) do
     t.text     "description"
     t.integer  "owner_id"
     t.string   "avatar"
-    t.integer  "requestor_id"
     t.datetime "available_at"
-    t.datetime "requesting_at"
-    t.datetime "returning_at"
     t.text     "comment"
     t.boolean  "available"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -84,6 +81,19 @@ ActiveRecord::Schema.define(version: 20150925183607) do
     t.datetime "updated_at",    null: false
     t.integer  "invitation_id"
   end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "requestor_id"
+    t.datetime "requesting_at"
+    t.datetime "returning_at"
+    t.text     "description"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "item_id"
+  end
+
+  add_index "requests", ["item_id"], name: "index_requests_on_item_id"
+  add_index "requests", ["requestor_id"], name: "index_requests_on_requestor_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

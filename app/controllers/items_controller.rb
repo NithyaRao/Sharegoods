@@ -55,7 +55,8 @@ class ItemsController < ApplicationController
     #debugger
     @group = Group.find(session[:group_id])
     @items = Item.where(owner_id: @group.memberships)
-    @selected = @items.where(:category_id => params[:category_id])
+    @selected = @items.where(category_id: params[:category_id]).order('available_at ASC')
+  
     respond_to do |format|
         format.js
     end
@@ -73,6 +74,6 @@ class ItemsController < ApplicationController
   private
  
    def item_params
-     params.require(:item).permit(:category_id, :name, :description, :owner_id, :avatar, :requestor_id, :available_at, :requesting_at, :returning_at, :comment, :available )
+     params.require(:item).permit(:category_id, :name, :description, :owner_id, :avatar, :available_at, :comment, :available )
    end
 end

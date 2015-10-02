@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-6">
     <%= form_for(@group) do |f| %>
-      <% if @group.errors.any? %>
+       <% if @group.errors.any? %>
         <div class="alert alert-danger">
         <h4>There are <%= pluralize(@group.errors.count, "error") %>.</h4>
         <ul>
