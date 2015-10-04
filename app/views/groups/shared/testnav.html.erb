@@ -2,12 +2,12 @@
 
 <div id="sharecontent">
     <div id="sharetab">
-    <ul id="tabs" class="nav nav-tabs" data-tabs="tab">
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
         <li><a href="#navreq" data-toggle="tab">Request</a></li>
-        <li class="dropdown"><a data-target="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" id="categorylist">Inventory<span class="caret"></span></a>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="categorylist">Inventory<span class="caret"></span></a>
         <ul class="dropdown-menu">
             <% @categories.each do |category| %>
-            <li> <%= link_to category.name, fetch_items_path(category_id: category.id), remote: true, :data => {:toggle=>"tab", :target=>"#"}   %></li> 
+            <li> <%= link_to category.name, fetch_items_path(category_id: category.id), remote: true  %></li> 
              <% end %>
         </ul>
         </li>
@@ -32,9 +32,18 @@
             <%= render partial: "groups/member" %>
         </div>
     </div>
- 
+
 </div>
  
- 
+
 </div> <!-- container -->
 
+<script type="text/javascript">
+ 
+ $('#tabs').click(function (e) {
+  e.preventDefault()
+  $("#tabs li").removeClass('active')
+  $(this).parent().addClass('active')
+  $(this).tab('show')
+})
+</script> 

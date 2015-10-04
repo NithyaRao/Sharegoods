@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index] do
      resources :requests, except: [:delete]
   end
-  get "/fetch_items" => 'items#from_category', as: 'fetch_items'
+  get "fetch_items/:category_id" => 'items#from_category', as: 'fetch_items'
   get "items/new_request/:item_id" => 'items#new_request', :as => :new_request
   post "items/sendmessage" => 'items#sendmessage', :as => :send_message_item
   

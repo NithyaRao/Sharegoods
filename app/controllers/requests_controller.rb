@@ -1,5 +1,7 @@
 class RequestsController < ApplicationController
   def index
+    @membership = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id])
+    @requests = Request.where(item_id: Item.where(owner_id: @membership))
   end
 
   def show
@@ -24,7 +26,7 @@ class RequestsController < ApplicationController
    
      if @request.save 
          flash[:notice] = "Request was created succesfully"
-         redirect_to :back
+         redirect_to :back #groups_path(session[:group_id])
       #   redirect_to new_group_item_path(session[:group_id])
      else
          flash[:error] = "There was an error creating the Request. Please try again."

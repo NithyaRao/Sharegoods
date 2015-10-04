@@ -38,35 +38,55 @@
       </div>
        <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <%= f.submit "I need one!", class: "btn btn-primary", id:"requestSubmit"  %>
+        <%= f.submit "I need one!", class: "btn btn-primary", id:"requestSubmit" %>
        </div>
        <%end %>    
     </div>
   </div>
   <script type="text/javascript">
      $(document).ready(function () {
-        $("#datepicker1, #datepicker2").datepicker({     
+        $('.datepicker').datepicker({     
             todayHighlight: true,
             todayBtn: true,
            format: 'mm/dd/yyyy',
             autoclose: true
           });
             
-
-
-     $('.datepicker').on('change', function() {
-         $('.datepicker').val();
+     $('#datepicker1').on('change', function() {
+         $('#datepicker1').val();
       });
-    
+   
+      $('#datepicker2').on('change', function() {
+         $('#datepicker2').val();
+      });
+   
+    });     
+</script>
+
+<script type="text/javascript">
+     $(function () {
+        $('#datepicker2').datepicker({     
+            todayHighlight: true,
+            todayBtn: true,
+           format: 'mm/dd/yyyy',
+            autoclose: true
+          });
+            
+      $('#datepicker2').on('change', function() {
+         $('#datepicker2').val();
+      });
+   
     });     
 </script>
 
 
 <script type="text/javascript">
-      $(document).ready(function () { 
-         $('body').on('hidden.bs.modal', '.modal', function () {
-          $(this).removeData('bs.modal');
-          });
+      $(function() { 
+
+         //$('body').on('hidden.bs.modal', '.modal', function () {
+         // $(this).removeData('bs.modal');
+         // });
+        $('#requestSubmit').click( function() { $("#modal-window").modal("hide"); } );
 
        });     
 </script>
