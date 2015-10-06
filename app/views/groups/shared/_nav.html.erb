@@ -12,24 +12,19 @@
         </ul>
         </li>
         <li><a href="#navwish" data-toggle="tab">Wishlist</a></li>
-        <li><a href="#navadd" data-toggle="tab">Add</a></li>
-        <li><a href="#navgroup" data-toggle="tab"><%=@group.name %> profile</a></li>
+        <li> <%= link_to "Add to Share", new_group_item_path(group_id: @group.id), remote: true, :data => {:toggle=>"tab", :target=>"#navadd"}   %></li> 
+        <li> <%= link_to @group.name , fetch_groupmembers_path(group_id: @group.id), remote: true, :data => {:toggle=>"tab", :target=>"#navgroup"}   %></li> 
     </ul>
     </div>
     <div id="my-tab-content" class="tab-content">
-        <div class="tab-pane fade" id="navreq">
-        </div>
+        <div class="tab-pane fade" id="navreq"> </div>
             
         <div class="tab-pane fade" id="navwish">
             <h1>Yellow</h1>
             <p>yellow yellow yellow yellow yellow</p>
         </div>
-        <div class="tab-pane fade" id="navadd">
-           <%= render template: "items/new", locals: {group: @group} %>
-        </div>
-        <div class="tab-pane fade" id="navgroup">
-            <%= render partial: "groups/member" %>
-        </div>
+        <div class="tab-pane fade" id="navadd"> </div>
+        <div class="tab-pane fade" id="navgroup"> </div>
     </div>
  
 </div>

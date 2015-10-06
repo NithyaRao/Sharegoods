@@ -11,8 +11,13 @@ class ItemsController < ApplicationController
   end
 
   def new
-    debugger
     @item = Item.new
+    @group = Group.find(session[:group_id])
+
+    respond_to do |format|
+        format.html
+        format.js
+     end
   end
 
   def create
@@ -28,6 +33,7 @@ class ItemsController < ApplicationController
       #   redirect_to new_group_item_path(session[:group_id])
      else
          flash[:error] = "There was an error creating the Item. Please try again."
+         @group = Group.find(session[:group_id])
          render :new
      end 
 
@@ -59,6 +65,7 @@ class ItemsController < ApplicationController
   
     respond_to do |format|
         format.js
+        format.html
     end
   end
 

@@ -34,6 +34,7 @@ class RequestsController < ApplicationController
       #   redirect_to new_group_item_path(session[:group_id])
      else
          flash[:error] = "There was an error creating the Request. Please try again."
+         @item = Item.find(params[:item_id])
          render :new
      end 
   end 

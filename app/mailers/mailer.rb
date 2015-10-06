@@ -15,7 +15,7 @@ class Mailer < ApplicationMailer
 #  end
 
   def invitation(invitation)
-  debugger
+  #debugger
   @invitation = invitation
   @url = 'http://www.google.com'
   mail(to: invitation.recipient_email, subject: 'Invitation',from: 'foo@example.com')

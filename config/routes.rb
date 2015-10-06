@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   get "fetch_items/:category_id" => 'items#from_category', as: 'fetch_items'
   get "fetch_sharerequests/" => 'requests#sharerequests', as: 'fetch_sharerequests'
+  get "fetch_groupmembers/:group_id" => 'groups#getmembers', as: 'fetch_groupmembers'
   post "items/sendmessage" => 'items#sendmessage', :as => :send_message_item
   post "items/:item_id/requests/:request_id/acceptrequest" => "requests#accept_request", as: 'accept_request'
   root to: 'welcome#index'

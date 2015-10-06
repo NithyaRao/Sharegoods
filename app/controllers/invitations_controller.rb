@@ -15,14 +15,17 @@ def create
   #  debugger
     if current_user != nil
       Mailer.invitation(@invitation).deliver_now
-      flash[:notice] = "Thank you, invitation sent."
-      redirect_to group_path(@invitation.group_id)
+      flash.now[:notice] = "Thank you, invitation sent."
+      @group = Group.find(session[:group_id])
+    #  redirect_to fetch_groupmembers_path(session[:group_id])
+      redirect_to :back
     else
       flash[:notice] = "Thank you, we will notify when we are ready."
       redirect_to root_path
     end
   else
-    render :action => 'new'
+     @group = Group.find(session[:group_id])
+    render fetch_groupmembers_path(session[:group_id])
   end
 end
 

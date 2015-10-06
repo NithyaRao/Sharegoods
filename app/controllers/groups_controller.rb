@@ -46,16 +46,25 @@ class GroupsController < ApplicationController
       else
          flash[:error] = "There was an error creating the group. Please try again."
          #redirect_to new_group_path
-     @user = User.find(current_user.id)
-     @invitation = Invitation.new
-     @membergroup = @user.groups
+         @user = User.find(current_user.id)
+         @invitation = Invitation.new
+         @membergroup = @user.groups
          render :new
       end 
     end
   end
 
- def edit
- end
+ def getmembers
+      @group = Group.find(session[:group_id]) 
+      @admin = User.find(@group.owner_id) 
+      @members =  @group.users
+      @invitation = Invitation.new
+     # authorize @group
+      respond_to do |format|
+        format.html
+        format.js
+     end
+  end
 
  private
  
