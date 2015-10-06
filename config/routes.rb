@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'requests/index'
-
-  get 'requests/show'
-
-  get 'requests/new'
-
-  get 'requests/edit'
-
   devise_for :users
   resources :users, only: [:update]
   resources :invitations
@@ -22,9 +14,9 @@ Rails.application.routes.draw do
 
   end
   get "fetch_items/:category_id" => 'items#from_category', as: 'fetch_items'
-  get "fetch_shareitems/" => 'items#shareitems_requests', as: 'fetch_shareitems'
+  get "fetch_sharerequests/" => 'requests#sharerequests', as: 'fetch_sharerequests'
   post "items/sendmessage" => 'items#sendmessage', :as => :send_message_item
-  post "items/:item_id/acceptrequest" => "items#accept_request", as: 'accept_request'
+  post "items/:item_id/requests/:request_id/acceptrequest" => "requests#accept_request", as: 'accept_request'
   root to: 'welcome#index'
 
   end

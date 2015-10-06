@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002164007) do
+ActiveRecord::Schema.define(version: 20151006133051) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "address1",                   null: false
@@ -87,9 +87,10 @@ ActiveRecord::Schema.define(version: 20151002164007) do
     t.datetime "requesting_at"
     t.datetime "returning_at"
     t.text     "description"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "item_id"
+    t.boolean  "accepted",      default: false
   end
 
   add_index "requests", ["item_id"], name: "index_requests_on_item_id"

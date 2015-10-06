@@ -1,7 +1,11 @@
 class RequestsController < ApplicationController
   def index
     @membership = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id])
-    @requests = Request.where(item_id: Item.where(owner_id: @membership))
+    @requests = Request.where(item_id: Item.where(owner_id: @membership)).order('requesting_at DESC')
+     
+    respond_to do |format|
+        format.js
+    end
   end
 
   def show
@@ -34,8 +38,28 @@ class RequestsController < ApplicationController
      end 
   end 
 
-  def edit
+# Requests for the logged in users items 
+  def sharerequests
+    @membership = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id])
+    @requests = Request.where(item_id: Item.where(owner_id: @membership)).order('requesting_at DESC')
+     
+    respond_to do |format|
+        format.js
+    end
   end
+
+  def accept_request
+  @request = Request.find(params[:request_id])
+  debugger
+  if @request.update_attributes(accepted: params[:checked])
+      redirect_to fetch_sharerequests_path(), notice: "Request accepted "
+  else
+     redirect_to fetch_sharerequests_path(), error: "Request to accept denied "
+  end
+ end
+
+ 
+
   private
  
    def request_params

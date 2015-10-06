@@ -1,0 +1,17 @@
+<% if !(request.accepted) %> 
+<tr class="clickable-row" data-href="url://" id=<%="requests-#{request.id}"%> >
+  <td><a href="#"> <%= request.item.name %> </a>
+  </td>
+  <td><%= request.item.description %>  </td>
+  <td><%= request.requestor_name %></td>
+  <td><%= request.requesting_at.strftime('%D') if request.requesting_at %></td>
+  <td><%= request.returning_at.strftime('%D') if request.returning_at %>  </td>
+  <td><%= request.description%></td>
+  <td> <h4> Avatar </h4> </td>
+  <td>
+    <%= hidden_field_tag 'itemid', request.item.id, class: "request-hidden" %> 
+    <%= check_box_tag 'completed', request.id, request.accepted, class: "accept-request", disabled: (request.accepted) %>  
+  </td>
+</tr>
+<% end %>
+

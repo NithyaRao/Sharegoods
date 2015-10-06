@@ -8,6 +8,6 @@
 <td><%= sharerequest.description%></td>
 <td> <h4> Avatar </h4> </td>
 <%debugger %>
-   <td><%= check_box_tag 'completed', sharerequest.item.id, false, class: "accept-request", disabled: !(sharerequest.item.available) %>  </td>
+   <td><%= check_box_tag 'completed', sharerequest.item.id, sharerequest.accepted, class: "accept-request", disabled: (sharerequest.accepted) %>  </td>
 </tr>
 
