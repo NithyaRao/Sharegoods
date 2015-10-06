@@ -17,4 +17,12 @@ class Item < ActiveRecord::Base
    def requestor_name
        User.find(Membership.find(self.requestor_id).user_id).name if self.requestor_id
    end
+
+   def item_name
+       self.name
+   end
+
+   def item_description
+        self.description
+   end
 end

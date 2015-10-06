@@ -1,0 +1,13 @@
+<tr class="clickable-row" data-href="url://" id=<%="sharerequests-#{sharerequest.id}"%> >
+<td><a href="#"> <%= sharerequest.item.name %> </a>
+</td>
+<td><%= sharerequest.item.description %>  </td>
+<td><%= sharerequest.requestor_name %></td>
+<td><%= sharerequest.requesting_at.strftime('%D') if sharerequest.requesting_at %></td>
+<td><%= sharerequest.returning_at.strftime('%D') if sharerequest.returning_at %>  </td>
+<td><%= sharerequest.description%></td>
+<td> <h4> Avatar </h4> </td>
+<%debugger %>
+   <td><%= check_box_tag 'completed', sharerequest.item.id, false, class: "accept-request", disabled: !(sharerequest.item.available) %>  </td>
+</tr>
+

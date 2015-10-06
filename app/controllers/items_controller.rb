@@ -62,14 +62,30 @@ class ItemsController < ApplicationController
     end
   end
 
-  def new_request
-   # debugger
-     @item = Item.find(params[:item_id])
+  def shareitems_requests
+    #debugger
+    @membership = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id])
+    @sharerequests = Request.where(item_id: Item.where(owner_id: @membership)).order('requesting_at DESC')
+     
     respond_to do |format|
-      format.html
-      format.js
+        format.js
     end
   end
+
+
+ def accept_request
+  @item = Item.find(params[:item_id])
+  debugger
+  if @item.update_attributes(available: !params[:checked])
+    # ... update successful
+     flash[:notice] = "Item updated"
+     redirect_to fetch_shareitems_path;
+  else
+    # ... update failed
+     flash[:error] = "Could not update information"
+      redirect_to fetch_shareitems_path;
+  end
+ end
 
   private
  

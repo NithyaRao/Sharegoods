@@ -12,10 +12,26 @@
           <th>Accept</th>
         </tr>
       </thead>  
-      <tbody class="js-items">       
-          <h4> Working on it </h4>
+      <tbody class="js-itemsshare">   
+             <%= render partial: 'items/sharelist', collection: sharerequests, as: :sharerequest  %> 
       <tbody> 
    </table>
+   
 </div> 
  
- 
+ <script type="text/javascript">
+
+ $(".accept-request").on('click',function () {
+  if (this.checked){
+    $.ajax({
+      url: '/items/'+this.value+'/acceptrequest',
+      type: 'POST',
+      data: {"checked": this.checked}
+    });
+  }
+  else {
+     alert("no");
+  }
+});
+
+ </script>
