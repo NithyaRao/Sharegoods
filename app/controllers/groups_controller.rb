@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  # layout 'main'
+  
   def show
       @group = Group.find(params[:id]) 
       @admin = User.find(@group.owner_id) 

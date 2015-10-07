@@ -25,4 +25,13 @@ class Item < ActiveRecord::Base
    def item_description
         self.description
    end
+
+   def busy_dates
+    # return an array of date ranges
+  end
+
+  def is_avalable_range?( from_date, to_date)
+    # use busy_dates to 
+      # return true or false
+    end
 end

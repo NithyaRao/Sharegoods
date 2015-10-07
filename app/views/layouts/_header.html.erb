@@ -4,8 +4,8 @@
         <h1><a href="#">Share<span>goods</span></a> Share with your Neighbor or Friends! </h1>
       <% end %>  
       <% if current_user %>
-      <nav>
-            <%= link_to "Home", root_path  %>
+      <nav id="header-nav">
+            <%= link_to "Home", root_path %>
             <%= link_to "My Profile", edit_user_registration_path %>
             <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
       </nav> 
@@ -13,3 +13,4 @@
     
     </div>
 </header>
+

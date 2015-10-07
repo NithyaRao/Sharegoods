@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @group = Group.find(session[:group_id])
-
+    #debugger
     respond_to do |format|
         format.html
         format.js
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
        @group = Group.find(session[:group_id])
   
        @item.owner_id = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id]).id
-       debugger
+       #debugger
    
      if @item.save 
          flash[:notice] = "Item was created succesfully"
