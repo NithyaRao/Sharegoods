@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006133051) do
+ActiveRecord::Schema.define(version: 20151007180255) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "address1",                   null: false
@@ -119,5 +119,17 @@ ActiveRecord::Schema.define(version: 20151006133051) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "wishitems", force: :cascade do |t|
+    t.integer  "category_id"
+    t.string   "name",          null: false
+    t.text     "description"
+    t.integer  "requestor_id"
+    t.datetime "requesting_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "wishitems", ["category_id"], name: "index_wishitems_on_category_id"
 
 end
