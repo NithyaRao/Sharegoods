@@ -5,15 +5,23 @@ class WishitemsController < ApplicationController
     @wishitems = Wishitem.where(requestor_id: @group.memberships)
     @categories = Category.all
     @wishitem = Wishitem.new
+
+    authorize @wishitems
+    respond_to do |format|
+        format.html
+        format.js
+     end
   end
 
   def show
      @wishitem = Wishitem.find(params[:wish_item_id])
+     authorize @wishitem
   end
 
   def new
     @wishitem = Wishitem.new
     @group = Group.find(session[:group_id])
+    authorize @wishitem
     #debugger
     respond_to do |format|
         format.html
@@ -26,9 +34,10 @@ class WishitemsController < ApplicationController
        @wishitem = Wishitem.new(wishitem_params)
        @group = Group.find(session[:group_id])
        @new_wishitem = Wishitem.new
-  
        @wishitem.requestor_id = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id]).id
-     
+       @wishitem.requesting_at = Date.strptime(wishitem_params[:requesting_at], '%m/%d/%Y %H:%M:%S').to_date if wishitem_params[:requesting_at]
+  
+       authorize @wishitem
    
      if @wishitem.save 
          flash[:notice] = "WishItem was created succesfully"
@@ -52,6 +61,7 @@ class WishitemsController < ApplicationController
   end
 
   def update
+    authorize @wishitem
     if @wishitem.update_attributes(wishitem_params)
        flash[:notice] = "WishItem updated"
        redirect_to wishitems_path
@@ -72,6 +82,7 @@ class WishitemsController < ApplicationController
       @group = Group.find(session[:group_id]) 
       @item = Item.new 
       @item.assign_attributes(category_id: @wishitem.category_id, name: @wishitem.name, description: @wishitem.description, owner_id: @member, available_at: Time.now, available: 'true' )
+      authorize @item, :create?
       if @item.save 
          @wishitem.destroy
          flash[:notice] = "Item was created succesfully from wishitem"

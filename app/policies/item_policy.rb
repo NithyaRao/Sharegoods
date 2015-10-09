@@ -1,2 +1,5 @@
 class ItemPolicy < ApplicationPolicy
- end
+  def index?
+      true
+  end
+end

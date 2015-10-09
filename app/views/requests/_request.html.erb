@@ -45,7 +45,7 @@
   </div>
   <script type="text/javascript">
      $(document).ready(function () {
-        $('.datepicker').datepicker({     
+        $('#datepicker1', '#datepicker2').datepicker({     
             todayHighlight: true,
             todayBtn: true,
            format: 'mm/dd/yyyy',
@@ -62,23 +62,6 @@
    
     });     
 </script>
-
-<script type="text/javascript">
-     $(function () {
-        $('#datepicker2').datepicker({     
-            todayHighlight: true,
-            todayBtn: true,
-           format: 'mm/dd/yyyy',
-            autoclose: true
-          });
-            
-      $('#datepicker2').on('change', function() {
-         $('#datepicker2').val();
-      });
-   
-    });     
-</script>
-
 
 <script type="text/javascript">
       $(function() { 

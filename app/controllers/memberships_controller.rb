@@ -3,12 +3,14 @@ class MembershipsController < ApplicationController
   def new
      @membership = Membership.new(:invitation_token => params[:invitation_token])
      # @user.email = @user.invitation.recipient_email if @user.invitation
+     authorize @membership
   end
 
   def create
-    debugger
+    #debugger
     @user = User.find(current_user)
     @group = Group.find(params[:membership][:group_id])
+    authorize @group
      if @group
        flash[:notice] = "Welcome to the Group"
        redirect_to [@group]

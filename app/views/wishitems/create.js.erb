@@ -1,5 +1,4 @@
  <% if @wishitem.valid? %>
- <% debugger %>
   $('.js-wishitem').prepend("<%= escape_javascript(render @wishitem) %>");
   $('.new-wishitem').html("<%= escape_javascript(render partial: 'wishitems/addwishitems', locals: {group: @group, wishitem: @new_wishitem}) %>");
  <% else %>

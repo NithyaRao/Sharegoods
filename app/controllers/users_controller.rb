@@ -2,12 +2,12 @@ class UsersController < ApplicationController
    before_action :authenticate_user!, except: [:show]
  
    def index
-     debugger
+    # debugger
     #  @users = User.top_rated.paginate(page: params[:page], per_page: 10)
    end
 
    def show
-      debugger
+     # debugger
       @user = User.find(params[:id])
    # @posts = @user.posts.visible_to(current_user)
     end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   #   debugger
   # end
    def update
-     debugger
+    # debugger
      @user = current_user
     # @user.build_address if @user.address.nil?
      if @user.update_attributes(user_params)

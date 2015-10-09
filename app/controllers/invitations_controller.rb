@@ -3,6 +3,7 @@ class InvitationsController < ApplicationController
 def new
   #debugger
   @invitation = Invitation.new
+  authorize @invitation
 
 end
 
@@ -11,6 +12,7 @@ def create
 
   @invitation.sender_id = current_user.id
   @invitation.group_id = session[:group_id]
+  authorize @invitation
   if @invitation.save
   #  debugger
     if current_user != nil

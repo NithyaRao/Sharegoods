@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-2 form-group">
         <div class="input-append date" data-date-format="yyyy-mm-dd" >
-          <%= f.text_field :requesting_at, class: 'datepicker', placeholder: "Enter date needed" %> 
+          <%= f.text_field :requesting_at, class: 'datepicker', placeholder: "Enter date needed",id: 'requesting' %> 
           <span class="add-on"><i class="icon-th"></i></span>
         </div>
     </div>
@@ -36,7 +36,7 @@
             // When the document is ready
      $(document).ready(function () {
                 
-          $('.datepicker').datepicker({
+          $('#requesting').datepicker({
             todayHighlight: true,
             todayBtn: true,
             title: 'Available Date',
@@ -46,8 +46,8 @@
             
       });
 
-     $('.datepicker').on('change', function() {
-         $('.datepicker').val();
+     $('#requesting').on('change', function() {
+         $('#requesting').val();
       });
 
 </script>
