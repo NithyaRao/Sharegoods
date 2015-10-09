@@ -34,13 +34,10 @@ class ItemsController < ApplicationController
      else
          flash[:error] = "There was an error creating the Item. Please try again."
          @group = Group.find(session[:group_id])
+         # check for controller if wishitem then redirect_to wishitem page
          render :new
      end 
 
-    #  respond_to do |format|
-   #     format.html
-     #   format.js
-     # end
   end
 
   def edit

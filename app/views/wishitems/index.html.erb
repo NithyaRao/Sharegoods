@@ -1,19 +1,8 @@
-<div class="tab-pane active" id="#wishitemindex">
-   <table class="table table-striped table-hover row-clickable">
-      <thead>
-        <tr >
-          <th>Name </th>
-          <th>Description </th>
-          <th>Requestor</th>
-          <th>Date Needed</th>
-        </tr>
-      </thead>  
-      <tbody class="js-wishitems">       
-          <%= render partial: 'wishitems/wishitem', collection: @wishitems %> 
-      <tbody> 
-   </table>
-  
-</div> 
-  <div id="modal-window-wish" class="modal" role="dialog" aria-labelledby="myModalLabel_2" aria-hidden="true"></div>
+  <h4> WishList Items for <%=@group.name %> group</h4>
+  <%= render partial: 'wishitems/wishitemslist' %>
+  <div class="new-wishitem">
+    <%= render template: 'wishitems/new' %>
+  </div>
+<div id="modal-window-wish" class="modal" role="dialog" aria-labelledby="myModalLabel_2" aria-hidden="true"></div>
 
  

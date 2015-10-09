@@ -42,6 +42,7 @@ class RequestsController < ApplicationController
 
 # Requests for the logged in users items 
   def sharerequests
+    @group = Group.find(session[:group_id])
     @membership = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id])
     @requests = Request.where(item_id: Item.where(owner_id: @membership)).order('requesting_at DESC')
      

@@ -1,0 +1,13 @@
+<table class="table table-striped table-hover row-clickable">
+  <thead>
+    <tr >
+      <th>Name </th>
+      <th>Description </th>
+      <th>Requestor</th>
+      <th>Date Needed</th>
+    </tr>
+  </thead>  
+   <tbody class="js-wishitem">      
+    <%= render partial: 'wishitems/wishitem', collection: @wishitems %> 
+  </tbody> 
+ </table>

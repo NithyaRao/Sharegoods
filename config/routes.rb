@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   get "fetch_groupmembers/:group_id" => 'groups#getmembers', as: 'fetch_groupmembers'
   post "items/sendmessage" => 'items#sendmessage', :as => :send_message_item
   post "items/:item_id/requests/:request_id/acceptrequest" => "requests#accept_request", as: 'accept_request'
-  get "new_wishitem_have_path/:wishitem_id" => "wishitems#add_to_items", as: 'add_wishtoitem'
+  get "member_has_wishitem_path/:wishitem_id" => "wishitems#member_has_wishitem", as: 'member_has_wishitem'
+  post "wishitems/:wishitem_id/addwishtomembershare" => "wishitems#add_to_items", as: 'add_wish_membershare'
+ 
   root to: 'welcome#index'
 
   end

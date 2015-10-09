@@ -1,5 +1,5 @@
-<tr class="clickable-row" data-href="url://" id=<%="wishitem-#{wishitem.id}"%> >
-<td><%= link_to wishitem.name, new_wishitem_have_path(wishitem_id: wishitem.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-wish'}  %> 
+<tr class="clickable-row" data-href="url://" id="wishitem-<%=wishitem.id%>" >
+<td><%= link_to wishitem.name, member_has_wishitem_path(wishitem_id: wishitem.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-wish'}  %> 
 </td>
 <td><a href="#"> <%= wishitem.description %> </a> </td>
 <td><a href="#"> <%= wishitem.requestor_name %> </a> </td>
