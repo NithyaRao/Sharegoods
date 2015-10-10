@@ -60,6 +60,7 @@ class GroupsController < ApplicationController
       @group = Group.find(session[:group_id]) 
       @admin = User.find(@group.owner_id) 
       @members =  @group.users
+      @invitations = Invitation.all
       @invitation = Invitation.new
      # authorize @group
       respond_to do |format|

@@ -1,5 +1,12 @@
 class InvitationsController < ApplicationController
 
+def index
+  #debugger
+  @invitations = Invitation.all
+  authorize @invitations
+
+end
+
 def new
   #debugger
   @invitation = Invitation.new
@@ -13,8 +20,9 @@ def create
   @invitation.sender_id = current_user.id
   @invitation.group_id = session[:group_id]
   authorize @invitation
+  debugger
   if @invitation.save
-  #  debugger
+  # debugger
     if current_user != nil
       Mailer.invitation(@invitation).deliver_now
       flash.now[:notice] = "Thank you, invitation sent."

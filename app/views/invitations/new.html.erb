@@ -1,3 +1,5 @@
+<form class="form-inline" >
+<h4> Invite People to join the Group </h4>
 <%= form_for @invitation, html: {id: 'new_invitegroup'}  do |f| %>
   <% if @invitation.errors.any? %>
         <div class="alert alert-danger">
@@ -9,8 +11,12 @@
         </ul>
         </div>
   <% end %>
-  <div class="form-group">
+    <div class="col-md-6 col-md-offset-2">
+     <div class="form-group">
     <%= f.email_field :recipient_email, class: 'form-control', placeholder:  "Enter Email Address" %>
+    <%debugger %>
     <%= f.submit "Invite!", class: 'btn btn-warning', name: 'submit' %>
+    </div>
   </div>
 <% end %>
+</form>

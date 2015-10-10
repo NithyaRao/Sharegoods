@@ -30,8 +30,8 @@
       </div>
     </div>
     <% if current_user == @admin %>
-     <h3> Invite People to join the Group </h3>
-     <%= render template: "invitations/new" %>
+       <%= render template: "invitations/index" %>
+       <%= render template: "invitations/new" %>
      <% end %>
     </div>
 </div>
