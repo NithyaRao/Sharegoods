@@ -86,9 +86,10 @@ class WishitemsController < ApplicationController
       authorize @item, :create?
       if @item.save 
          @wishitem.destroy
-         flash[:notice] = "Item was created succesfully from wishitem"
+         return render text: "successfully created", status: 200
+         # flash[:notice] = "Item was created succesfully from wishitem"
          #debugger
-         redirect_to group_wishitems_path(@group.id)
+         # redirect_to group_wishitems_path(@group.id)
         # redirect_to :back
       #   redirect_to new_group_item_path(session[:group_id])
      else

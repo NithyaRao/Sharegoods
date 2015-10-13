@@ -17,12 +17,19 @@
 
 <script type="text/javascript">
       $(function() { 
+
         $('#additemSubmit').click( function() { 
+            var id = this.value;
             $.ajax({
-              url: '/wishitems/'+this.value+'/addwishtomembershare',
-              type: 'POST'
+              url: '/wishitems/'+id+'/addwishtomembershare',
+              type: 'POST',
+              success: function(data) { 
+             //   console.log("********" + id + ' ' + data);
+                $("#wishitem-" + id).hide(); 
+              }
             });
             $("#modal-window-wish").modal("hide"); 
+            
         } );
 
       }); 
