@@ -1,0 +1,6 @@
+<% if @invitation.valid? %>
+  $('.js-invitations').html("<%= escape_javascript(render @invitations )%>");
+  $('.new-invitation').html("<%= escape_javascript(render partial: 'invitations/form', locals: { invitation: @new_invitation }) %>");
+<% else %>
+  $('.new-invitation').html("<%= escape_javascript(render partial: 'invitations/form', locals: { invitation: @invitation } ) %>");
+<% end %>

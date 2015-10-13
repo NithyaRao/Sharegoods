@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
       @categories = Category.all
       @item = Item.new
       @membership = Membership.find_by(user_id: session[:user_id], group_id: @group.id)  
-     authorize @group
+      authorize @group
       #debugger
       # change the User.all to new many-many table 
 
@@ -60,7 +60,7 @@ class GroupsController < ApplicationController
       @group = Group.find(session[:group_id]) 
       @admin = User.find(@group.owner_id) 
       @members =  @group.users
-      @invitations = Invitation.all
+      @invitations = @group.invitations.all
       @invitation = Invitation.new
      # authorize @group
       respond_to do |format|

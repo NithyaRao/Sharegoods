@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007180255) do
+ActiveRecord::Schema.define(version: 20151011233535) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "address1",                   null: false
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20151007180255) do
   end
 
   add_index "invitations", ["group_id"], name: "index_invitations_on_group_id"
+  add_index "invitations", ["recipient_email"], name: "index_invitations_on_recipient_email", unique: true
 
   create_table "items", force: :cascade do |t|
     t.integer  "category_id"

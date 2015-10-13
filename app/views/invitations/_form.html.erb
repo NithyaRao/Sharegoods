@@ -1,0 +1,19 @@
+<div class="row col-md-6 col-md-offset-2" >
+    <h4> Invite People to join the Group </h4>
+    <%= form_for invitation, html: {id: 'new_invitegroup'} , remote: true  do |f| %>
+      <% if invitation.errors.any? %>
+        <div class="alert alert-danger">
+        <h4>There are <%= pluralize(invitation.errors.count, "error") %>.</h4>
+        <ul>
+          <% invitation.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+        </div>
+      <% end %>
+      <div class="container col-md-6 col-md-offset-2 form-group form-inline">
+        <%= f.email_field :recipient_email, class: 'form-control', placeholder:  "Enter Email Address" %>
+        <%= f.submit "Invite!", class: 'btn btn-warning', name: 'inviteSubmit' %>
+      </div>
+      <% end %>
+</div>

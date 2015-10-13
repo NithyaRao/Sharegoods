@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships
+  has_many :invitations
   validates :name, length: { minimum: 5 }, presence: true
   validates :description, length: { minimum: 20 }, presence: true
   validates :owner_id, presence: true

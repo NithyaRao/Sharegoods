@@ -1,12 +1,14 @@
 class Invitation < ActiveRecord::Base
 belongs_to :sender, :class_name => 'Membership'
 has_one :recipient, :class_name => 'Membership'
+has_one :group
 
-validates_presence_of :recipient_email
+validates_presence_of :recipient_email, uniqueness: {message: "Invite already sent"}
 validates_presence_of :group_id
 validate :recipient_is_not_registered
 
 before_create :generate_token
+default_scope { order('updated_at DESC') }
 
 private
 
