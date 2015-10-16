@@ -20,7 +20,7 @@ def create
   if @invitation.save 
   # debugger
     if current_user != nil
-      MemberNotifier.invitation(@invitation, current_user.email).deliver
+      MemberNotifier.invitation(@invitation, current_user.email).deliver_now
       flash.now[:notice] = "Thank you, invitation sent."
       @group = Group.find(session[:group_id])
     else

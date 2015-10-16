@@ -81,6 +81,7 @@ class WishitemsController < ApplicationController
       @wishitem = Wishitem.find(params[:wishitem_id])
       @group = Group.find(session[:group_id]) 
       @member = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id])
+      @requestor = User.find(Membership.find_by(@wishitem.requestor_id).user_id)
       @item = Item.new 
       @item.assign_attributes(category_id: @wishitem.category_id, name: @wishitem.name, description: @wishitem.description, owner_id: @member, available_at: Time.now, available: 'true' )
       authorize @item, :create?
@@ -88,6 +89,8 @@ class WishitemsController < ApplicationController
          @wishitem.destroy
          flash[:notice] = "Item was created succesfully from wishitem"
          #debugger
+         MemberNotifier.notify_requestor(@wishitem, @requestor.email, @requestor.name, @group.name, current_user.email).deliver_now
+   
          redirect_to group_wishitems_path(@group.id)
         # redirect_to :back
       #   redirect_to new_group_item_path(session[:group_id])
