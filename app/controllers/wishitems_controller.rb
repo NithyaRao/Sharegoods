@@ -1,6 +1,6 @@
 class WishitemsController < ApplicationController
   def index
-    debugger
+   # debugger
     @group = Group.find(session[:group_id]) 
     @wishitems = Wishitem.where(requestor_id: @group.memberships)
     @categories = Category.all

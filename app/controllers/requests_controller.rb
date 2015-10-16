@@ -59,7 +59,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:request_id])
     @requestor= User.find(Membership.find_by(@request.requestor_id).user_id)
     @group = Group.find(session[:group_id])
-    debugger
+   # debugger
     authorize @request, :update?
     if @request.update_attributes(accepted: params[:checked])
       #send email to requestor 

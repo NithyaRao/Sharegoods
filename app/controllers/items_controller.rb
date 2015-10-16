@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @group = Group.find(session[:group_id])
-    debugger  
+   # debugger  
     @item.owner_id = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id]).id
     @item.available_at =  Date.strptime(item_params[:available_at], '%m/%d/%Y').to_date if item_params[:available_at]
     @item.available = true if @item.available_at
