@@ -7,12 +7,11 @@ Rails.application.routes.draw do
   get 'signup/:invitation_token', to: 'devise/registrations#new', as: 'signup'
 
   resources :groups, except: [:delete] do
-    resources :items 
+    resources :items, only: [:create, :new] 
     resources :wishitems
-  end 
-  resources :items, only: [:index] do
+   end 
+  resources :items, only: [:show] do
      resources :requests, except: [:delete]
-
   end
   get "fetch_items/:category_id" => 'items#from_category', as: 'fetch_items'
   get "fetch_sharerequests/" => 'requests#sharerequests', as: 'fetch_sharerequests'
