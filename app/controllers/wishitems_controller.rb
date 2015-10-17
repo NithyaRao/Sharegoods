@@ -1,8 +1,5 @@
 class WishitemsController < ApplicationController
   def index
-<<<<<<< HEAD
-    #debugger
->>>>>>> User-story-11
     @group = Group.find(session[:group_id]) 
     @wishitems = Wishitem.where(requestor_id: @group.memberships)
     @categories = Category.all
@@ -89,11 +86,16 @@ class WishitemsController < ApplicationController
       authorize @item, :create?
       if @item.save 
          @wishitem.destroy
-         flash[:notice] = "Item was created succesfully from wishitem"
+         return render text: "successfully created", status: 200
+         # flash[:notice] = "Item was created succesfully from wishitem"
          #debugger
+<<<<<<< HEAD
          MemberNotifier.notify_requestor(@wishitem, @requestor.email, @requestor.name, @group.name, current_user.email).deliver_now
    
          redirect_to group_wishitems_path(@group.id)
+=======
+         # redirect_to group_wishitems_path(@group.id)
+>>>>>>> User-story-12
         # redirect_to :back
       #   redirect_to new_group_item_path(session[:group_id])
      else

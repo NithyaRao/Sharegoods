@@ -1,11 +1,5 @@
 class ItemsController < ApplicationController
-  def index
-    #debugger
-    @group = Group.find(session[:group_id])
-    @items = Item.where(owner_id: @group.memberships)
-    @categories = Category.all
-    authorize @items
-  end
+
 
   def show
      @item = Item.find(params[:id])
@@ -67,7 +61,7 @@ class ItemsController < ApplicationController
     @selected = @items.where(category_id: params[:category_id]).order('available_at ASC')
     authorize @selected, :index?
     respond_to do |format|
-      format.js
+      format.js 
       format.html
     end
   end

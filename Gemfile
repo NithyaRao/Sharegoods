@@ -23,7 +23,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-#gem 'turbolinks'
+gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -51,6 +51,7 @@ gem 'high_voltage', '~> 2.4.0'
 gem 'StreetAddress', :require => "street_address"
 gem "simple-navigation"
 gem 'bootstrap-datepicker-rails', '~> 1.4.0'
+#gem 'rack-pjax'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
