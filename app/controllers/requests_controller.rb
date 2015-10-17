@@ -57,9 +57,13 @@ class RequestsController < ApplicationController
 
   def accept_request
     @request = Request.find(params[:request_id])
-    #debugger
+    @requestor= User.find(Membership.find_by(@request.requestor_id).user_id)
+    @group = Group.find(session[:group_id])
+   # debugger
     authorize @request, :update?
     if @request.update_attributes(accepted: params[:checked])
+      #send email to requestor 
+       MemberNotifier.accept_request(@request, @requestor.email, @requestor.name, @group.name, current_user.email).deliver_now
       redirect_to fetch_sharerequests_path(), notice: "Request accepted "
     else
      redirect_to fetch_sharerequests_path(), error: "Request to accept denied "
