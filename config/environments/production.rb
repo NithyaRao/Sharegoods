@@ -77,9 +77,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-<<<<<<< HEAD
   config.action_mailer.default_url_options = { host: 'nrao-sharegoods.herokuapp.com'} 
->>>>>>> User-story-11
  
   config.action_mailer.delivery_method = :smtp
 end

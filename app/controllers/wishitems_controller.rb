@@ -88,14 +88,9 @@ class WishitemsController < ApplicationController
          @wishitem.destroy
          return render text: "successfully created", status: 200
          # flash[:notice] = "Item was created succesfully from wishitem"
-         #debugger
-<<<<<<< HEAD
          MemberNotifier.notify_requestor(@wishitem, @requestor.email, @requestor.name, @group.name, current_user.email).deliver_now
    
          redirect_to group_wishitems_path(@group.id)
-=======
-         # redirect_to group_wishitems_path(@group.id)
->>>>>>> User-story-12
         # redirect_to :back
       #   redirect_to new_group_item_path(session[:group_id])
      else
