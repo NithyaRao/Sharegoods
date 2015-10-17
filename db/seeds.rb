@@ -13,6 +13,7 @@ member = User.new(
  member.skip_confirmation!
  member.save!
 
+ Category.create(name:"Tools", description: "Screw driver set, crimper tools etc")
  Category.create(name:"Cleaning", description: "Vacuum cleaner, mop etc")
  Category.create(name:"Kitchen Appliances", description: "High power blender, espresso maker, ice cream maker, popcorn machinetc")
 Category.create(name:"Yard", description: "Leaf Blower, rake, snow shovel wheelbarrow etc")
