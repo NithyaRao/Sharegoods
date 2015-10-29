@@ -38,43 +38,4 @@
   </div>
   <%= render "layouts/footer" %>
 
-
-<script type="text/javascript">
-
-$(document).ready(function () {
-
-    $('a[data-toggle="tab"]').on('click', function(e) {
-      history.pushState(null, null, $(this).attr('href'));
-    }); 
-
-    //$(window).on("popstate", function(e) {
-      window.addEventListener("popstate", function(e) {
-      var activeTab = $('[href="' + location.pathname + '"]');
-      console.log ( '***** ' + activeTab);
-      if (activeTab.length) {
-      // activeTab.click();
-         activeTab.tab('show');
-        $("#my-tab-content").load(activeTab.attr('href'));
-      } else {
-     //  $('.nav-tabs a:first').click();
-      $('.nav-tabs a:first').tab('show')
-      }
-    });
- 
-    //$('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
-      //  var href = $(e.target).attr("href");
-        //    location.replace(href);
-      
-   // });
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-  e.target // newly activated tab
-  console.log ('****'+ e.target) ;
-  e.relatedTarget // previous active tab
-  console.log ('^^^^^'+ e.relatedTarget) ;
-});
-
-});
-
-</script>
-
 </body>
