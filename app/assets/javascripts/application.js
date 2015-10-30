@@ -24,20 +24,20 @@ history.pushState(null, document.title, this.href);
 if ( document.activeElement.dataset.target == "#" ){
 document.activeElement.parentElement.click();
 }
-//console.log ('^^^^'+ this.href + "&&&" + document.activeElement.dataset.target);
+console.log ('^^^^'+ this.href + "&&&" + document.activeElement.dataset.target);
 return false;
 });
 
 $('#header-nav a').on("click", function(e) {
 $.getScript(this.href);
 history.pushState(null, document.title, this.href);
-//console.log ('#####'+ location.href);
+console.log ('#####'+ location.href);
 //return false;
 });
 
 $(window).bind("popstate", function() {
 $.getScript(location.href);
-//console.log ('****'+ location.href);
+console.log ('****'+ location.href);
 });
 });
 }
