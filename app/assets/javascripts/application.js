@@ -17,28 +17,31 @@
 //= require_tree .
 
 if (history && history.pushState) {
-      $(function() {
-$('a[data-toggle="tab"]').on("click", function(e) {
-// $.getScript(this.href);
-history.pushState(null, document.title, this.href);
-if ( document.activeElement.dataset.target == "#" ){
-document.activeElement.parentElement.click();
-}
-console.log ('^^^^'+ this.href + "&&&" + document.activeElement.dataset.target);
-// return false;
-});
+  $(function() {
+    $('a[data-toggle="tab"]').on("click", function(e) {
+    // $.getScript(this.href);
+    history.pushState(null, document.title, this.href);
+    if ( document.activeElement.dataset.target == "#" ){
+    document.activeElement.parentElement.click();
+    }
+    console.log ('^^^^'+ this.href );
+    // return false;
+    });
 
-$('#header-nav a').on("click", function(e) {
-$.getScript(this.href);
-history.pushState(null, document.title, this.href);
-console.log ('#####'+ location.href);
-//return false;
-});
+    $('#header-nav a').on("click", function(e) {
+      //$.getScript(this.href);
+      history.pushState(null, document.title, this.href);
+      console.log ('#####'+ location.href);
+      //return false;
+    });
 
-$(window).bind("popstate", function() {
-$.getScript(location.href);
-console.log ('****'+ location.href);
-});
-});
+    $(window).bind("popstate", function() {
+      // $.getScript(location.href);
+      if (location.innerHTML != "Sign out" ) {
+        window.location = location.href;
+        console.log ('****'+ location.href);
+      }
+    });
+  });
 }
 
