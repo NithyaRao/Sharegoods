@@ -19,13 +19,13 @@
 if (history && history.pushState) {
       $(function() {
 $('a[data-toggle="tab"]').on("click", function(e) {
-$.getScript(this.href);
+// $.getScript(this.href);
 history.pushState(null, document.title, this.href);
 if ( document.activeElement.dataset.target == "#" ){
 document.activeElement.parentElement.click();
 }
 console.log ('^^^^'+ this.href + "&&&" + document.activeElement.dataset.target);
-return false;
+// return false;
 });
 
 $('#header-nav a').on("click", function(e) {
