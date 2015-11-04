@@ -304,3 +304,7 @@ table.row-clickable tbody tr td a {
 div#invitediv {
    display:inline-block;
 }
+
+body.modal-open .datepicker {
+    z-index: 1200 !important;
+}
