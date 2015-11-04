@@ -25,6 +25,7 @@ if (history && history.pushState) {
     document.activeElement.parentElement.click();
     }
     console.log ('^^^^'+ this.href );
+    $('.hideClass').hide();
     // return false;
     });
 
@@ -35,11 +36,11 @@ if (history && history.pushState) {
       //return false;
     });
 
-    $(window).bind("popstate", function() {
+    $(window).bind("popstate", function(e) {
       // $.getScript(location.href);
       if (location.innerHTML != "Sign out" ) {
-        window.location = location.href;
-        console.log ('****'+ location.href);
+          window.location = location.href;
+          console.log ('****'+ location.href);
       }
     });
   });

@@ -19,6 +19,7 @@
            <div class="form-group">
             <%= f.label :requesting_at, "When?", class: "control-label" %>
             <div class="input-append date" data-date-format="mm-dd-yyyy" >
+                <%debugger %>
                  <%= f.text_field :requesting_at, class: "datepicker", id: "datepicker1" %>
                   <span class="add-on"><i class="icon-th"></i></span>
             </div>
@@ -45,14 +46,15 @@
   </div>
   <script type="text/javascript">
      $(document).ready(function () {
+         console.log ( "@@@@@ In datepicker function") ;    
+ 
         $('#datepicker1', '#datepicker2').datepicker({     
             todayHighlight: true,
             todayBtn: true,
            format: 'mm/dd/yyyy',
             autoclose: true
           });
-            
-     $('#datepicker1').on('change', function() {
+        $('#datepicker1').on('change', function() {
          $('#datepicker1').val();
       });
    

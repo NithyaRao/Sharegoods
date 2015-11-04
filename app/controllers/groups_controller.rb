@@ -68,7 +68,7 @@ class GroupsController < ApplicationController
       @invitation = Invitation.new
      # authorize @group
       respond_to do |format|
-        format.html
+        format.html 
         format.js
      end
   end
