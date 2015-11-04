@@ -1,0 +1,25 @@
+<div id="sharecontent" >
+    <div id="sharetab">
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tab">
+        <li> <%= link_to "Request", fetch_sharerequests_path(), :data => {:toggle=>"tab", :target=>"#navreq"}   %></li> 
+        <li class="dropdown"><a data-target="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" id="categorylist">Inventory<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <% Category.find_each do |category| %>
+            <li> <%= link_to category.name, fetch_items_path(category_id: category.id),  :data => {:toggle=>"tab", :target=>"#"}   %></li> 
+             <% end %>
+        </ul>
+        </li>
+        <li> <%= link_to "Wish List", group_wishitems_path(group_id: @group.id),  :data => {:toggle=>"tab", :target=>"#navwish"}   %></li> 
+        <li> <%= link_to "Add to Share", new_group_item_path(group_id: @group.id),  :data => {:toggle=>"tab", :target=>"#navadd"}   %></li> 
+        <li> <%= link_to "Group Profile" , fetch_groupmembers_path(group_id: @group.id),  :data => {:toggle=>"tab", :target=>"#navgroup"}   %></li> 
+    </ul>
+    </div>
+    <div id="my-tab-content" class="tab-content">
+        <div class="tab-pane fade" id="navreq">   </div>          
+        <div class="tab-pane fade" id="navwish">  </div>
+        <div class="tab-pane fade" id="navadd">   </div>
+        <div class="tab-pane fade" id="navgroup"> </div>
+    </div>
+ 
+</div>
+ 
