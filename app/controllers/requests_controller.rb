@@ -9,9 +9,6 @@ class RequestsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def new
     @request = Request.new
     @item = Item.find(params[:item_id])
@@ -43,11 +40,23 @@ class RequestsController < ApplicationController
     end 
   end 
 
-# Requests for the logged in users items 
+# Get all requests for the logged in users items 
   def sharerequests
     @group = Group.find(session[:group_id])
     @membership = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id])
     @requests = Request.where(item_id: Item.where(owner_id: @membership)).order('requesting_at DESC')
+    authorize @requests, :index?
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
+ # get all logged in users request for others items
+
+   def memberrequests
+    @group = Group.find(session[:group_id])
+    @membership = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id])
+    @requests = Request.where(requestor_id: @membership).order('requesting_at DESC')
     authorize @requests, :index?
     respond_to do |format|
       format.js

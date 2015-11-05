@@ -24,7 +24,7 @@ if (history && history.pushState) {
     if ( document.activeElement.dataset.target == "#" ){
     document.activeElement.parentElement.click();
     }
-    console.log ('^^^^'+ this.href );
+   // console.log ('^^^^'+ this.href );
     $('.hideClass').hide();
     // return false;
     });
@@ -32,7 +32,7 @@ if (history && history.pushState) {
     $('#header-nav a').on("click", function(e) {
       //$.getScript(this.href);
       history.pushState(null, document.title, this.href);
-      console.log ('#####'+ location.href);
+     // console.log ('#####'+ location.href);
       //return false;
     });
 
@@ -40,7 +40,7 @@ if (history && history.pushState) {
       // $.getScript(location.href);
       if (location.innerHTML != "Sign out" ) {
           window.location = location.href;
-          console.log ('****'+ location.href);
+       //   console.log ('****'+ location.href);
       }
     });
   });

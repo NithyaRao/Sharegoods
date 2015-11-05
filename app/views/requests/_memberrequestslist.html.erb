@@ -1,0 +1,10 @@
+<tr >
+  <td style="text-align:left"><%= request.item.name %> </td>
+  <td style="text-align:left"><%= request.item.description %>  </td>
+  <td style="text-align:center" ><%= request.requesting_at.strftime('%D') if request.requesting_at %></td>
+  <td style="text-align:center" ><%= request.returning_at.strftime('%D') if request.returning_at %>  </td>
+  <td><%= request.description%></td>
+  <td> <h4> Avatar </h4> </td>
+  <td style="text-align:center"><%= bool_to_glyph(request.accepted) %></td>
+</tr>
+

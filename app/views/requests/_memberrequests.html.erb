@@ -1,0 +1,21 @@
+<div class="container" id= "memberrequestdiv">
+  <h4> My Requests for <%=@group.name %> group items </h4>
+  <center>
+   <table class="table table-striped table-hover">
+      <thead>
+        <tr >
+          <th>Name </th>
+          <th>Description </th>
+          <th>Requesting Date</th>
+          <th>Return Date</th>
+          <th>Request</th>
+          <th>Image </th>
+          <th>Accepted?</th>
+        </tr>
+      </thead>  
+      <tbody class="js-memberrequests">   
+             <%= render partial: 'requests/memberrequestslist', collection: requests, as: :request  %> 
+      </tbody> 
+   </table>
+   </center>
+</div> 
