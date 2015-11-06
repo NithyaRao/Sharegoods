@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   # layout 'main'
-  
+  before_action :auth_user
+
   def show
       @group = Group.find(params[:id]) 
       @admin = User.find(@group.owner_id) 

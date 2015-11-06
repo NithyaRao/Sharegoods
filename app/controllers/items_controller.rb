@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  before_action :auth_user
 
   def show
      @item = Item.find(params[:id])

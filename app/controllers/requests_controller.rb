@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  before_action :auth_user
+
   def index
     @membership = Membership.find_by(user_id: session[:user_id], group_id: session[:group_id])
     @requests = Request.where(item_id: Item.where(owner_id: @membership)).order('requesting_at DESC')

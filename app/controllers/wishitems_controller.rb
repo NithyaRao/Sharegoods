@@ -1,4 +1,6 @@
 class WishitemsController < ApplicationController
+  before_action :auth_user
+
   def index
     @group = Group.find(session[:group_id]) 
     @wishitems = Wishitem.where(requestor_id: @group.memberships)

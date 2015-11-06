@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+before_action :auth_user
 
 def new
   #debugger

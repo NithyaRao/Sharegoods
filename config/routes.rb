@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
+  devise_scope :user do
+  get '/users/sign_out' => 'devise/sessions#destroy'
+end
   resources :users, only: [:update]
   resources :invitations
    get 'welcome/index'
@@ -13,6 +17,8 @@ Rails.application.routes.draw do
   resources :items, only: [:show] do
      resources :requests, except: [:delete]
   end
+
+
   get "fetch_items/:category_id" => 'items#from_category', as: 'fetch_items'
   get "fetch_sharerequests/" => 'requests#sharerequests', as: 'fetch_sharerequests'
   get "fetch_memberrequests/" => 'requests#memberrequests', as: 'fetch_memberrequests'

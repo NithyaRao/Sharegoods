@@ -4,7 +4,7 @@
   <title>Sharegoods</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'application' , "data-turbolinks-track" => true %> 
    <%= csrf_meta_tags %>
   <style>
     body {
@@ -15,7 +15,7 @@
 <body>
   <div class="container" id="sharemain" >
     <%= render "layouts/header" %>
-       <% if flash.now[:notice] %>
+    <% if flash.now[:notice] %>
          <div class="alert alert-success">
            <button type="button" class="close" data-dismiss="alert">&times;</button>
            <%= flash.now[:notice] %>
@@ -31,9 +31,7 @@
            <%= flash.now[:alert] %>
          </div>
     <% end %> 
-    <div id ='data-pjax-container'  >    
-      <%= yield %>
-    </div>
+    <%= yield %>
     <div class="clearfooter"></div>
   </div>
   <%= render "layouts/footer" %>
