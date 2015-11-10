@@ -5,11 +5,9 @@
       <div class="form-group">
         <%= hidden_field_tag :selgroup, "1" %>
         <%= f.label :name %>
-        <%= f.collection_select(:id, @membergroup, :id, :name, {} , { class: 'form-control', onchange: 
+        <%= f.collection_select(:id, @membergroup, :id, :name, { include_blank: "Select your group"} , { class: 'form-control', onchange: 
           "$('#new_group1').submit();"} ) %>
-
-      </div>
-      
+      </div>      
     <% end %>
   </div>
 </div>
