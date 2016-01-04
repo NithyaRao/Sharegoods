@@ -42,7 +42,22 @@ if (history && history.pushState) {
         if (state && state.isState ) {      
           window.location = location.href;
         }
+        
     });
+
+    $("#new_group1").submit(function(event){
+ // var valDDL = $(this).val();  
+        //event.preventDefault();
+         var valDDL = $("#group_id").val();
+         console.log ('%%%%%'+ valDDL);
+         if(valDDL=="")
+         {
+             event.preventDefault();
+             alert("select dropdown option");
+         } 
+       
+ });
+
   });
 }
 

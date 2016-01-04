@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
       @group = Group.find(params[:group][:id])
         if @group
        flash[:notice] = "Welcome to the #{@group.name} Group"
-       redirect_to [@group]
+       redirect_to fetch_groupmembers_path(@group.id)
       end
     else 
       @group = Group.new(group_params)
@@ -62,7 +62,8 @@ class GroupsController < ApplicationController
   end
 
  def getmembers
-      @group = Group.find(session[:group_id]) 
+     # debugger
+      @group = Group.find(params[:group_id]) 
       @admin = User.find(@group.owner_id) 
       @members =  @group.users
       @invitations = @group.invitations.all
