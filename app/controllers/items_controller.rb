@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @group = Group.find(session[:group_id])
+    @group = Group.find(params[:group_id])
     #debugger
     authorize @item
     respond_to do |format|
