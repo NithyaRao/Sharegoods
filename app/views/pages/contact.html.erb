@@ -1,35 +1,8 @@
 <div class="container">
   <div class="jumbotron">
-   <p>Contact Us </p>
-   <%= form_for( url: contact_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Enter email" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "Sign up", class: 'btn btn-warning', style: "color:black" %>
-      </div>
-   <% end %>
-   <form class="valid curl_white_box" method="post" action="/contact">
-      <p>Help us improve ShareGoods by sharing your ideas and feedback! Send us an email using the form below</p>
-      
-      <p>
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" class="required" value="" />
-      </p>
-      <p>
-        <label for="email">Your Email:</label>
-        <input type="text" id="email" name="email" class="required email" value="" />
-      </p>
-      <p>
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" class="required"></textarea>
-      </p>
-      <p>
-        <input type="submit" value="Send Message" class="btn btn-warning" style="color:black" />
-        <div class="clearer"></div>
-      </p>
-    </form>
+    <p>Contact Us </p>
+    <p>Help us improve ShareGoods by sharing your ideas and feedback! Send us an email using the form below</p>
+    <%= render template: 'messages/new' %>
+  
   </div>
 </div>

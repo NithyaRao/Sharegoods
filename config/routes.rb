@@ -27,7 +27,9 @@ end
   post "items/:item_id/requests/:request_id/acceptrequest" => "requests#accept_request", as: 'accept_request'
   get "member_has_wishitem_path/:wishitem_id" => "wishitems#member_has_wishitem", as: 'member_has_wishitem'
   post "wishitems/:wishitem_id/addwishtomembershare" => "wishitems#add_to_items", as: 'add_wish_membershare'
- 
+  get "contact", to: 'messages#new', as: 'contact'
+  post "contact", to: 'messages#create'
+   
   root to: 'welcome#index'
 
   end
